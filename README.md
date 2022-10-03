@@ -17,3 +17,36 @@ ll /dev/sd*
 ![image](https://user-images.githubusercontent.com/77662970/193533096-6897c376-5da9-4d5c-be12-348e9d22153f.png)
 
 3.
+La commande pour accorder une partitions de fichier pour linux est 
+```
+sudo mkfs.ext4 /dev/sdb1
+```
+
+![image](https://user-images.githubusercontent.com/77662970/193534260-15fbb1be-53a7-46ea-9750-28eb16e3af33.png)
+
+Pour NFTS /
+```
+sudo mkfs.ntfs /dev/sdb2
+```
+
+![image](https://user-images.githubusercontent.com/77662970/193535067-ac83e23a-6ee8-4ca8-aa3e-ca2e0573dea9.png)
+
+4. La commande ```df -T``` ne marche pas sur nos 2 partitions car celle-ci ne sont pas encore montées.
+
+5.
+On doit modifier le fichier fstab
+```
+sudo nano /etc/fstab
+```
+puis on rentre les les lignes suivantes :
+
+![image](https://user-images.githubusercontent.com/77662970/193541499-c253880f-3b18-4cbd-bcae-b2a0af1da647.png)
+
+puis on redemarre la vm et on force la prise en compte des modification du fichier ```/fstab``` avec ```sudo mount -a```
+
+# Exercice 2
+
+1.
+![image](https://user-images.githubusercontent.com/77662970/193544943-b800e0b9-351c-44fe-a99c-ce1e7728a2c6.png)
+
+2.
