@@ -3,20 +3,23 @@ tp-5-yanis692 created by GitHub Classroom
 
 # Exerice 1
 
-2. On affiche les differents disques dur et partitions avec 
+## 2. Vérifiez que ce nouveau disque dur est bien détecté par le système
+On affiche les differents disques dur et partitions avec 
 ```
 ll /dev/sd*
 ```
 ![image](https://user-images.githubusercontent.com/77662970/193530068-8266ac93-e0ea-4811-b756-e1051ac6a4ab.png)
 
-2. 
+## 3. Partitionnez ce disque en utilisant fdisk : créez une première partition de 2 Go de type Linux (n°83),
+et une seconde partition de 3 Go en NTFS (n°7)
 
 ![image](https://user-images.githubusercontent.com/77662970/193533220-22af50ef-0006-4ce7-8eb1-ca7bc4ea7eb8.png)
 
 
 ![image](https://user-images.githubusercontent.com/77662970/193533096-6897c376-5da9-4d5c-be12-348e9d22153f.png)
 
-3.
+## 4. A ce stade, les partitions ont été créées, mais elles n’ont pas été formatées avec leur système de fichiers.
+A l’aide de la commande mkfs, formatez vos deux partitions ( pensez à consulter le manuel !)
 La commande pour accorder une partitions de fichier pour linux est 
 ```
 sudo mkfs.ext4 /dev/sdb1
@@ -31,9 +34,14 @@ sudo mkfs.ntfs /dev/sdb2
 
 ![image](https://user-images.githubusercontent.com/77662970/193535067-ac83e23a-6ee8-4ca8-aa3e-ca2e0573dea9.png)
 
-4. La commande ```df -T``` ne marche pas sur nos 2 partitions car celle-ci ne sont pas encore montées.
+## 5. Pourquoi la commande df -T, qui affiche le type de système de fichier des partitions, ne fonctionne-telle pas sur notre disque ?
 
-5.
+La commande ```df -T``` ne marche pas sur nos 2 partitions car celle-ci ne sont pas encore montées.
+
+## 6 et 7  Faites en sorte que les deux partitions créées soient montées automatiquement au démarrage de la
+machine, respectivement dans les points de montage /data et /win (vous pourrez vous passer des
+UUID en raison de l’impossibilité d’effectuer des copier-coller)
+
 On doit modifier le fichier fstab
 ```
 sudo nano /etc/fstab
@@ -46,29 +54,35 @@ puis on redemarre la vm et on force la prise en compte des modification du fichi
 
 # Exercice 2
 
-1.
+## 1.On va réutiliser le disque de 5 Gio de l’exercice précédent. Commencez par démonter les systèmes de
+fichiers montés dans /data et /win s’ils sont encore montés, et supprimez les lignes correspondantes
+du fichier /etc/fstab
+
 ![image](https://user-images.githubusercontent.com/77662970/193544943-b800e0b9-351c-44fe-a99c-ce1e7728a2c6.png)
 
-2.
+## 2.Supprimez les deux partitions du disque, et créez une partition unique de type LVM
 
 ![image](https://user-images.githubusercontent.com/77662970/193547876-3877cf67-d3ba-4cfe-8cef-2418286d24ad.png)
 
-3.
+## 3. A l’aide de la commande pvcreate, créez un volume physique LVM. Validez qu’il est bien créé, en
+utilisant la commande pvdisplay.
 ```sudo pvcreate /dev/sdb1```
 ```sudo pvdisplay```
 
 ![image](https://user-images.githubusercontent.com/77662970/193549152-e793449d-8f9f-4173-ade9-e3fe77c1dc70.png)
 
-4.
+## 4. A l’aide de la commande vgcreate, créez un groupe de volumes, qui pour l’instant ne contiendra que
+le volume physique créé à l’étape précédente. Vérifiez à l’aide de la commande vgdisplay.
 
 ![image](https://user-images.githubusercontent.com/77662970/193559639-02d76c97-5951-465d-bea7-6558db1172fc.png)
 
-5.
+## 5.Créez un volume logique appelé lvData occupant l’intégralité de l’espace disque disponible.
 ```
 sudo lvcreate -n lvData -l 100%FREE grp1
 ```
 
-6.
+## 6.Dans ce volume logique, créez une partition que vous formaterez en ext4, puis procédez comme dans
+l’exercice 1 pour qu’elle soit montée automatiquement, au démarrage de la machine, dans /data
 ```
 sudo mkfs.ext4 /dev/mapper/grp1-lvData
 ```
@@ -77,7 +91,7 @@ Ensuite modification du fichier fstab :
 ![image](https://user-images.githubusercontent.com/77662970/193570049-1252a93e-c4cf-43bb-9588-9877670b7134.png)
 
 Ensuite etrendre la VM, la rallumer faire 
-```moount -a```
+```mount -a```
 
 puis on verifie avec ```df -T``` :
 
