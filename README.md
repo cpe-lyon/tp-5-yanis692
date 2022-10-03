@@ -59,4 +59,13 @@ puis on redemarre la vm et on force la prise en compte des modification du fichi
 
 ![image](https://user-images.githubusercontent.com/77662970/193549152-e793449d-8f9f-4173-ade9-e3fe77c1dc70.png)
 
+4.
+
+![image](https://user-images.githubusercontent.com/77662970/193559639-02d76c97-5951-465d-bea7-6558db1172fc.png)
+
+5.
+```
+sudo lvcreate -n lvData -l 100%FREE grp1
+```
+
 
