@@ -69,6 +69,17 @@ sudo lvcreate -n lvData -l 100%FREE grp1
 ```
 
 6.
+```
+sudo mkfs.ext4 /dev/mapper/grp1-lvData
+```
+Ensuite modification du fichier fstab :
+
+![image](https://user-images.githubusercontent.com/77662970/193570049-1252a93e-c4cf-43bb-9588-9877670b7134.png)
+
+Ensuite etrendre la VM, la rallumer faire 
+```moount -a```
+
+puis on verifie avec ```df -T``` :
 
 ![image](https://user-images.githubusercontent.com/77662970/193569546-acb1a8fa-b16d-4ab1-99ef-11db5d5f2df7.png)
 
