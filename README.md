@@ -50,3 +50,13 @@ puis on redemarre la vm et on force la prise en compte des modification du fichi
 ![image](https://user-images.githubusercontent.com/77662970/193544943-b800e0b9-351c-44fe-a99c-ce1e7728a2c6.png)
 
 2.
+
+![image](https://user-images.githubusercontent.com/77662970/193547876-3877cf67-d3ba-4cfe-8cef-2418286d24ad.png)
+
+3.
+```sudo pvcreate /dev/sdb1```
+```sudo pvdisplay```
+
+![image](https://user-images.githubusercontent.com/77662970/193549152-e793449d-8f9f-4173-ade9-e3fe77c1dc70.png)
+
+
