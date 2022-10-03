@@ -68,4 +68,7 @@ puis on redemarre la vm et on force la prise en compte des modification du fichi
 sudo lvcreate -n lvData -l 100%FREE grp1
 ```
 
+6.
+
+![image](https://user-images.githubusercontent.com/77662970/193569546-acb1a8fa-b16d-4ab1-99ef-11db5d5f2df7.png)
 
