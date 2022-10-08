@@ -97,3 +97,22 @@ puis on verifie avec ```df -T``` :
 
 ![image](https://user-images.githubusercontent.com/77662970/193569546-acb1a8fa-b16d-4ab1-99ef-11db5d5f2df7.png)
 
+## 7. Eteignez la VM pour ajouter un second disque (peu importe la taille pour cet exercice). Redémarrez
+la VM, vérifiez que le disque est bien présent. Puis, répétez les questions 2 et 3 sur ce nouveau disque.
+
+![image](https://user-images.githubusercontent.com/77662970/194702601-1a08c4d7-974d-47f3-9b18-d8a09723e66e.png)
+
+![image](https://user-images.githubusercontent.com/77662970/194703005-9b252809-8a93-4e12-a85b-030ae8e54ac6.png)
+
+## 8. Utilisez la commande vgextend <nom_vg> <nom_pv> pour ajouter le nouveau disque au groupe de
+volumes
+
+
+![image](https://user-images.githubusercontent.com/77662970/194703045-33054410-9772-4d4f-977d-4d8c5092c5d0.png)
+
+## 9. Utilisez la commande lvresize (ou lvextend) pour agrandir le volume logique. Enfin, il ne faut pas
+oublier de redimensionner le système de fichiers à l’aide de la commande resize2fs.
+
+![image](https://user-images.githubusercontent.com/77662970/194703374-9c62e441-59a1-4797-a4b5-49c71526fc57.png)
+
+
